@@ -1,53 +1,75 @@
 package com.backend.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-public class Product 
-{
+@Table(name = "Product")
+public class Product implements Serializable
+{	
+	
+	private static final long serialVersionUID = 5186013952828648626L;
+	
 	@Id
-	@GeneratedValue
-	private int Id;
-	private String Name;
-	private int Quantity;
-	private double Price;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	private String name;
+	private int quantity;
+	private double price;
+	private String p_category;
 	
-	
-	@OneToMany
-	@JoinColumn(name="CATEGORY_ID")
-	
-	
-	public int getId() {
-		return Id;
-	}
-	public void setId(int id) {
-		Id = id;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	public String getName() {
-		return Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 	public int getQuantity() {
-		return Quantity;
+		return quantity;
 	}
 	public void setQuantity(int quantity) {
-		Quantity = quantity;
+		this.quantity = quantity;
 	}
 	public double getPrice() {
-		return Price;
+		return price;
 	}
 	public void setPrice(double price) {
-		Price = price;
+		this.price = price;
 	}
-		
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getP_category() {
+		return p_category;
+	}
+	public void setP_category(String p_category) {
+		this.p_category = p_category;
+	}
 	
+	
+	
+	
+	/*public Product(int id,String name,int quantity,double price)
+	{
+		super();
+		this.id=id;
+		this.name=name;
+		this.quantity=quantity;
+		this.price=price;
+	}*/
 }

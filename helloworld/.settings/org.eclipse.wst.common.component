@@ -5,6 +5,9 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <dependent-module archiveName="Hibernate1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Hibernate1/target/Hibernate1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="helloworld"/>
         <property name="java-output-path" value="/helloworld/target/classes"/>
     </wb-module>
