@@ -1,0 +1,14 @@
+com\niit\dao\SupplierDAO.class
+com\niit\dao\ProductDAOImpl.class
+com\niit\model\Product.class
+com\niit\controller\CategoryController.class
+com\niit\model\Supplier.class
+com\niit\dao\SupplierDAOImpl.class
+com\niit\controller\SupplierController.class
+com\niit\dao\ProductDAO.class
+com\niit\controller\UserController.class
+com\niit\config\DbConfig.class
+com\niit\dao\CategoryDAOImpl.class
+com\niit\model\Category.class
+com\niit\controller\ProductController.class
+com\niit\dao\CategoryDAO.class
