@@ -69,20 +69,5 @@
         </div>
     </nav>
 </div>
-<c:choose>
-		<c:when test="${ProductPageClicked}">
-			<c:import url="/WEB-INF/views/Product.jsp"></c:import>
-		</c:when>
-	</c:choose>
-	<c:choose>
-		<c:when test="${CategoryPageClicked}">
-			<c:import url="/WEB-INF/views/Category.jsp"></c:import>
-		</c:when>
-	</c:choose>
-	<c:choose>
-		<c:when test="${SupplierPageClicked}">
-			<c:import url="/WEB-INF/views/Supplier.jsp"></c:import>
-		</c:when>
-	</c:choose>
 </body>
 </html>                                		

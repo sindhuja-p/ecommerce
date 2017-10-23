@@ -50,15 +50,12 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin <b class="caret"></b></a>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">User <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="category">Category action</a></li>
-                            <li><a href="supplier">Supplier action</a></li>
-                            <li><a href="product">Product action</a></li>
-                            <li class="divider"></li>
-                            <!-- <li><a href="logout">Logout</a></li> -->
-                         
-                              <li> <a href="<c:url value="j_spring_security_logout" />">Logout</a></li>
+                         <li><a href="login">Login</a></li>
+                            <li><a href="register">Registration</a></li>
+                      
+                           <li> <a href="<c:url value="j_spring_security_logout" />">Logout</a></li>
                             
                            
                             

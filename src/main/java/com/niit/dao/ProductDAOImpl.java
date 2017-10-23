@@ -1,7 +1,5 @@
 package com.niit.dao;
 
-import org.hibernate.SessionFactory;
-
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -14,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.model.Product;
+
+
 
 @SuppressWarnings("deprecation")
 @Repository
@@ -35,9 +35,9 @@ public class ProductDAOImpl implements ProductDAO {
 	@Transactional
 	public boolean saveProduct(Product product) {
 		
-		log.info("Persisting Product object started.........", product.getPrice());
+		log.info("Persisting Product object started.........", product.getName());
 		sessionFactory.getCurrentSession().saveOrUpdate(product);
-		log.info("Product has been saved successfully....", product.getPrice());
+		log.info("Product has been saved successfully....", product.getName());
 		
 		return true;
 	}
@@ -103,14 +103,19 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Transactional
 	public List<Product> homeList() {
-		String hql="from Product ORDER BY RAND()";
+		/*String hql="from Product ORDER BY RAND()";
 		@SuppressWarnings("rawtypes")
 		Query query=sessionFactory.getCurrentSession().createQuery(hql).setMaxResults(6);
 		@SuppressWarnings("unchecked")
 		List<Product> listProduct = (List<Product>) query.list();
 		if (listProduct != null && !listProduct.isEmpty()) {
 			return listProduct;
-		}
+		}*/
 		return null;
+	}
+@Transactional
+	public Product getItem(int id) {
+		Product product=sessionFactory.getCurrentSession().get(Product.class, id);
+		return product;
 	}
 }

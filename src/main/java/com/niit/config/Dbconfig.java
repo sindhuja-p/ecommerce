@@ -27,12 +27,14 @@ import com.niit.dao.ProductDAO;
 import com.niit.dao.ProductDAOImpl;
 import com.niit.dao.SupplierDAO;
 import com.niit.dao.SupplierDAOImpl;
-
+import com.niit.dao.UserDAO;
+import com.niit.dao.UserDAOImpl;
 //import com.niit.dao.SupplierDAO;
 //import com.niit.dao.SupplierDAOImpl;
 import com.niit.model.Category;
 import com.niit.model.Product;
 import com.niit.model.Supplier;
+import com.niit.model.User;
 
 //import com.niit.model.Supplier;
 
@@ -71,7 +73,7 @@ public class Dbconfig {
 			sessionBuilder.addProperties(getHibernateProperties());
 			sessionBuilder.addAnnotatedClass(Product.class);
 			sessionBuilder.addAnnotatedClass(Category.class);
-			
+			sessionBuilder.addAnnotatedClass(User.class);
 			sessionBuilder.addAnnotatedClass(Supplier.class);
 			
 			sessionBuilder.scanPackages("com.niit");
@@ -107,4 +109,10 @@ public class Dbconfig {
 	public SupplierDAO getSupplierDAO(SessionFactory sessionFactory) {
 	   return new SupplierDAOImpl(sessionFactory);
 	}
+	@Autowired
+	@Bean(name = "userDAO")
+	public UserDAO getUserDAO(SessionFactory sessionFactory) {
+	    return new UserDAOImpl(sessionFactory);
+	}
+	
 }
