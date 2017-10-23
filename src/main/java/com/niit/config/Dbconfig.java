@@ -20,7 +20,8 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-
+import com.niit.dao.CartDAO;
+import com.niit.dao.CartDAOImpl;
 import com.niit.dao.CategoryDAO;
 import com.niit.dao.CategoryDAOImpl;
 import com.niit.dao.ProductDAO;
@@ -29,6 +30,7 @@ import com.niit.dao.SupplierDAO;
 import com.niit.dao.SupplierDAOImpl;
 import com.niit.dao.UserDAO;
 import com.niit.dao.UserDAOImpl;
+import com.niit.model.Cart;
 //import com.niit.dao.SupplierDAO;
 //import com.niit.dao.SupplierDAOImpl;
 import com.niit.model.Category;
@@ -75,6 +77,7 @@ public class Dbconfig {
 			sessionBuilder.addAnnotatedClass(Category.class);
 			sessionBuilder.addAnnotatedClass(User.class);
 			sessionBuilder.addAnnotatedClass(Supplier.class);
+			sessionBuilder.addAnnotatedClass(Cart.class);
 			
 			sessionBuilder.scanPackages("com.niit");
 			System.out.println("Session");
@@ -113,6 +116,12 @@ public class Dbconfig {
 	@Bean(name = "userDAO")
 	public UserDAO getUserDAO(SessionFactory sessionFactory) {
 	    return new UserDAOImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name = "cartDAO")
+	public CartDAO getCartDAO(SessionFactory sessionFactory)
+	{
+		return new CartDAOImpl(sessionFactory);
 	}
 	
 }
