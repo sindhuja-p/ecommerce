@@ -1,5 +1,7 @@
 package com.niit.controller; 
 
+
+
 import java.util.Collection;
 
 import javax.servlet.http.HttpSession;
@@ -30,13 +32,15 @@ import com.niit.model.User;
 @Controller
 public class HomeController {
 	
-	 /*@RequestMapping(value="/",  method=RequestMethod.GET)
+	/* @RequestMapping(value="/",  method=RequestMethod.GET)
 		public String showIndex(){
 			System.out.println("Inside Index Mapping");
 			return "index";
 		}
-*/
-
+		*/
+	
+	
+	
 	@Autowired
 	ProductDAO productDAO;
 
@@ -62,7 +66,7 @@ public class HomeController {
 	    	session.setAttribute("HomeList", productDAO.homeList());
 	    	session.setAttribute("CartList",cartDAO.listCart());
 	    	m.addAttribute("UserClickedshowproduct", "true");
-	    	// session.setAttribute("ListProduct", productDAO.getProductByCategoryID(id));
+	    	/*session.setAttribute("ListProduct", productDAO.getProductByCategoryID(id));*/
 			return "index";
 	    }
 	
@@ -80,7 +84,7 @@ public class HomeController {
 	    }
 	 @SuppressWarnings("unchecked")
 		@RequestMapping(value = "/login_session_attributes")
-		public String login_session_attributes(Model model) {
+		public String login_session_attributes(HttpSession session,Model model) {
 			String email = SecurityContextHolder.getContext().getAuthentication().getName();
 			
 			User user = userDAO.get(email);
@@ -114,16 +118,13 @@ public class HomeController {
 	 }
 
 			
-			@RequestMapping(value = "signup")
+	   	@RequestMapping(value = "register")
 			public String DisplayRegister(Model mv) {
 				mv.addAttribute("user", new User());
 				mv.addAttribute("IfRegisterClicked", "true");
-
 				return "Signup";
 			}
 
-			
-			
 			@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
 			public String UserRegister(@ModelAttribute("user") User user,RedirectAttributes attributes) {
 				user.setEnabled(true);
@@ -138,11 +139,11 @@ public class HomeController {
 			
 				model.addAttribute("navproducts", productDAO.getProductByCategory(id));
 				model.addAttribute("Clickedcatproduct", "true");
-				return "catproducts";
+				return "cartproducts";
 			}
 			
 
-			  @RequestMapping(value ="ShowProduct/{id}" )
+			@RequestMapping(value ="ShowProduct/{id}" )
 			    public String ShowProduct(@PathVariable("id") int id,RedirectAttributes attributes,Model m) {
 			        m.addAttribute("UserClickedshowproduct", "true");
 			        m.addAttribute("productList", productDAO.getProductById(id));

@@ -3,9 +3,25 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-	<jsp:include page="header.jsp" /> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Index Page</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+	.bs-example{
+    	margin: 20px;
+    }
+</style>
 
 
+</head>
+<body>
 <c:url var="actionUrl" value="saveUser" />
 
 <form:form  commandName="user" method="post" action="${actionUrl }" class="form-horizontal" >
@@ -14,23 +30,19 @@
 	<div class="form-group">
 		<label for="First Name" class="col-xs-4 control-label">First Name</label>
 		<div class="col-xs-4">
-			<form:input name="firstName" path="firstName" placeholder="User First Name" class="form-control" />
+			<form:input name="id" path="firstName" placeholder="User First Name" class="form-control" />
 		</div>
 	</div>
-	
-	
 	
 	
 	<div class="form-group">
 		<label for="First Name" class="col-xs-4 control-label">Last Name</label>
 		<div class="col-xs-4">
-			<form:input name="id" path="lastName" placeholder="User First Name" class="form-control" />
+			<form:input name="id" path="lastName" placeholder="User Last Name" class="form-control" />
 		</div>
 	</div>
 	
 	
-	
-
 	<div class="form-group">
 		<label for="Supplier Name" class="col-xs-4 control-label">Email</label>
 		<div class="col-xs-4">
@@ -52,20 +64,15 @@
 		</div>
 	</div>
 
-
-
 	<div class="form-group">
 	<label for="code" class="col-xs-4 control-label"></label>
 		
 		<div class="col-xs-4">
-		
 			
-	
 		<input type="submit" value="Add User" id="btn-add" class="btn btn-primary" >
 	
-	
-
-		
-		</div>
+	</div>
 	</div>
 </form:form>
+</body>
+</html>
