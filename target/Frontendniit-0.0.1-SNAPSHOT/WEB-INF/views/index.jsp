@@ -17,8 +17,7 @@
     	margin: 20px;
     }
 </style>
-<jsp:include page="ShowProduct.jsp" />  
-
+ 
 </head>
 <body>
 ${ExistingMessage}
@@ -74,17 +73,24 @@ ${ExistingMessage}
 </div>
 
 
+<div class="container">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="3" class="active"></li>
+  </ol>
 
-
-<!-- <================> -->
-
+  
+<!-- =================================-->
 <div class="container">
 		<c:forEach items="${ProductList}" var="product">
 			<h2 style="color: red">
 				<c:out value="${product.name }" />
 			</h2>
 			<div class="pi-img-wrapper">
-										<img src="/Shoppingcart/myImage/imageDisplay?id=${product.id}"
+										<img src="/Frontendniit/myImage/imageDisplay?id=${product.id}"
 											class="img-responsive" style="width: 100px; height: 100px">
 										<div>				</div>
 			</div>
@@ -119,4 +125,4 @@ ${ExistingMessage}
 	</br>
 	</br>
 </body>
-</html> 
+</html>   

@@ -16,17 +16,16 @@ import com.niit.dao.ProductDAO;
 import com.niit.model.Product;
 
 
-
 @Controller
-public class ImageController {
-	
+public class ImageController 
+{	
 	@Autowired
 	ProductDAO productDAO;
 	
 	@RequestMapping(value = "myImage/imageDisplay", method = RequestMethod.GET)
 	  public void showImage(@RequestParam("id") int id, HttpServletResponse response,HttpServletRequest request) 
 			  throws ServletException, IOException{
-		
+		System.out.println("Inside Image Controller");
 		System.out.println(id);
 		Product item = productDAO.getItem(id);
 		System.out.println(id);

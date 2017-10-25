@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Category Page</title>
+<title>Product Page</title>
  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="resources/css/Pretty-Footer.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -145,6 +145,7 @@
 					<th width="2%">product Name</th>
 					<th width="2%">product Description</th>
 					<th width="2%">Product Price</th>
+					<th width="2%">Product Quantity</th>
 					<th width="2%">Product InStock</th>
 					<th width="2%">Product Category</th>
 					<th width="2%">Product Supplier</th>
@@ -161,6 +162,7 @@
 						<td><c:out value="${product.name}" /></td>
 						<td><c:out value="${product.description}" /></td>
 						<td><c:out value="${product.price}" /></td>
+						<td><c:out value="${product.quantity}" /></td>
 						<td><c:out value="${product.instock}" /></td>
 						<td><c:out value="${product.category_id}" /></td>
 						<td><c:out value="${product.supplier_id}" /></td>

@@ -20,7 +20,6 @@
     	margin: 20px;
     }
 </style>
-<... <jsp:include page="ShowProduct.jsp" />..>
 
 </head>
 <body>
