@@ -35,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">CHOCOHUB</a>
+                <a class="navbar-brand" href="#">icecream</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -137,9 +137,10 @@
                         
                         </td>
                         <td>
-                        <button type="button" class="btn btn-success">
-                            Checkout <span class="glyphicon glyphicon-play"></span>
-                        </button></td>
+                        <a href="Checkout" class="btn btn-success">
+                            Checkout <span class="glyphicon glyphicon-play"> 
+                            .</span>
+                        </a></td>
                     </tr>
                 </tbody>
             </table>

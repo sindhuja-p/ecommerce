@@ -151,5 +151,11 @@ public class CartController
 	return "redirect:/";	
 
 	}
+	@RequestMapping("Checkout")
+	public String checkout()
+	{
+	return "Checkout";
+	}
+	}
 
-}
+

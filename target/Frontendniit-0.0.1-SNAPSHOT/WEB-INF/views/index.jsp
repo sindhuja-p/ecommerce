@@ -36,7 +36,7 @@ ${ExistingMessage}
                 </button>
                 
                 
-                <a class="navbar-brand" href="#">CHOCOHUB</a>
+                <a class="navbar-brand" href="#">icecream</a>
           		
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->

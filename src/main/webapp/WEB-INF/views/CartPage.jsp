@@ -137,9 +137,10 @@
                         
                         </td>
                         <td>
-                        <button type="button" class="btn btn-success">
-                            Checkout <span class="glyphicon glyphicon-play"></span>
-                        </button></td>
+                        <a href="Checkout" class="btn btn-success">
+                            Checkout <span class="glyphicon glyphicon-play"> 
+                            .</span>
+                        </a></td>
                     </tr>
                 </tbody>
             </table>
