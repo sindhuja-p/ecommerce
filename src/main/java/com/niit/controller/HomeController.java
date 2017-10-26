@@ -30,17 +30,8 @@ import com.niit.model.User;
 
 
 @Controller
-public class HomeController {
-	
-	/* @RequestMapping(value="/",  method=RequestMethod.GET)
-		public String showIndex(){
-			System.out.println("Inside Index Mapping");
-			return "index";
-		}
-		*/
-	
-	
-	
+public class HomeController 
+{	
 	@Autowired
 	ProductDAO productDAO;
 
@@ -79,6 +70,7 @@ public class HomeController {
 	    	if(logout!=null)
 	    		model.addAttribute("logout","Loggedout successfully");
 	    		model.addAttribute("LoginPageClicked", true);
+	    		//model.addAttribute("loggedin successfully");
 	    	return "LoginPage";
 	    	
 	    }
@@ -102,7 +94,7 @@ public class HomeController {
 			     {
 			    	 session.setAttribute("UserLoggedIn", "true");
 			    	//session.setAttribute("cartsize",cartDAO.cartsize((Integer)session.getAttribute("userid")));
-			    	 return "redirect:/";
+			    	 return "/loggedin";
 			     }
 			     else 
 			     {
@@ -139,15 +131,15 @@ public class HomeController {
 			
 				model.addAttribute("navproducts", productDAO.getProductByCategory(id));
 				model.addAttribute("Clickedcatproduct", "true");
-				return "cartproducts";
+				return "catproducts";
 			}
 			
 
-			@RequestMapping(value ="ShowProduct/{id}" )
+			@RequestMapping(value ="showProduct/{id}" )
 			    public String ShowProduct(@PathVariable("id") int id,RedirectAttributes attributes,Model m) {
 			        m.addAttribute("UserClickedshowproduct", "true");
 			        m.addAttribute("productList", productDAO.getProductById(id));
-			    	return "ShowProduct";
+			    	return "showProduct";
 			    }
 			
 			
@@ -164,8 +156,4 @@ public class HomeController {
 		    System.out.println("Listed the product by Category ID:"+id);
 		    return "redirect:/";
 		}
-
-		
-		
-	 }
-	    
+}
