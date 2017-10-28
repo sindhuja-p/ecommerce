@@ -25,7 +25,7 @@ public class ImageController
 	@RequestMapping(value = "myImage/imageDisplay", method = RequestMethod.GET)
 	  public void showImage(@RequestParam("id") int id, HttpServletResponse response,HttpServletRequest request) 
 			  throws ServletException, IOException{
-		System.out.println("Inside Image Controller");
+		
 		System.out.println(id);
 		Product item = productDAO.getItem(id);
 		System.out.println(id);

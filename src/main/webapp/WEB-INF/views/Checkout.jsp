@@ -1,299 +1,163 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Credit Card Validation Demo</title>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/demo.css">
-</head>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CheckOut Page</title>
+  <link rel="stylesheet" href="resources/css/Pretty-Footer.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
 </head>
 <body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="assets/js/jquery.payform.min.js" charset="utf-8"></script>
-    <script src="assets/js/script.js"></script>
-</body>
+
 <div class="container">
-	<div class="row">
-        <div class="form-group col-md-12 bg-primary">
-            <label class="control-label" for="billinginformation">Shipping Information</label>
-        </div>
-        
-        <div class="shipping-info">
-            <div class="form-group col-md-6">
-              <span class="required-lbl">* </span><label class="control-label" for="firstname">First Name</label>
-              <div class="controls">
-                <input id="firstname" name="firstname" type="text" placeholder="" class="form-control" required="">
-              </div>
-            </div>
-            
-            <div class="form-group col-md-6">
-              <span class="required-lbl">* </span><label class="control-label" for="lastname">Last Name</label>
-              <div class="controls">
-                <input id="lastname" name="lastname" type="text" placeholder="" class="form-control" required="">
-              </div>
-            </div>
-            
-            <div class="form-group col-md-6">
-              <span class="required-lbl">* </span><label class="control-label" for="shippingaddress1">Shipping Address 1</label>
-              <div class="controls">
-                <input id="shippingaddress1" name="shippingaddress1" type="text" placeholder="" class="form-control" required="">
-              </div>
-            </div>
-            
-            <div class="form-group col-md-6">
-              <label class="control-label" for="shippingaddress2">Shipping Address 2</label>
-              <div class="controls">
-                <input id="shippingaddress2" name="shippingaddress2" type="text" placeholder="" class="form-control" required="">
-              </div>
-            </div>
-            
-            <div class="form-group col-md-6">
-              <span class="required-lbl">* </span><label class="control-label" for="shippingcountry">Shipping Country</label>
-              <div class="controls">
-                 <div class="controls">
-                    <select id="shippingcountry" name="shippingcountry" class="input-xlarge">
-                      <option>Please Select</option>
-                      <option>Australia</option>
-                    </select>
-                  </div>
-              </div>
-            </div>
-            
-             <div class="form-group col-md-6">
-              <span class="required-lbl">* </span><label class="control-label" for="shippingstate">Shipping State</label>
-              <div class="controls">
-                <select id="shippingstate" name="shippingstate" class="input-xlarge">
-                  <option>Please Select</option>
-                  <option>Australian Capital Territory</option>
-                  <option>New South Wales</option>
-                  <option>Northern Territory</option>
-                  <option>Queensland</option>
-                  <option>South Australia</option>
-                  <option>Tasmania</option>
-                  <option>Victoria</option>
-                  <option>Western Australia</option>
-                  <option>Other</option>
-                </select>
-              </div>
-            </div>
-            
-            <div class="form-group col-md-6">
-              <span class="required-lbl">* </span><label class="control-label" for="shippingcity">Shipping City</label>
-              <div class="controls">
-                <input id="shippingcity" name="shippingcity" type="text" placeholder="" class="form-control" required="">
-              </div>
-            </div>
-            
-            <div class="form-group col-md-6">
-              <span class="required-lbl">* </span><label class="control-label" for="postcode">Post Code</label>
-              <div class="controls">
-                <input id="postcode" name="postcode" type="text" placeholder="" class="form-control" required="">
-              </div>
-            </div>
-            
-            <hr/>
-            
-            <div class="form-group col-md-12 bg-primary">
-             <div class="control-group">
-                  
-                  <div class="controls">
-                  <label class="control-label" for="billinginformation">Billing Information</label>
-                  <label class="checkbox" for="billinginformation">
-                      <input type="checkbox" name="billinginformation" id="billinginformation" value="Use Shipping Address">
-                      Use Shipping Address
-                    </label>
-                  </div>
+   <div class="col-xs-offset-2 col-xs-12">
+             <div class="form-group">
+                 <label style="color:white;" class="control-label" for="total"><h3><strong>Grand Total : ${total}</strong></h3></label>
                 </div>
+                </div>                    
+        
+            <div class="row .payment-dialog-row" id="checkOut-box">
+                <div class="col-md-4 col-md-offset-4 col-xs-12">
+                    <div class="panel panel-default credit-card-box">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><span class="panel-title-text">Payment Details </span><img class="img-responsive panel-title-image" src="<c:url value="/resources/assets/img/accepted_cards.png"/>"></h3></div>
+                        <div class="panel-body">
+                            <form:form action="invoice" id="payment-form" modelAttribute="card">
+                            <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                        	<form:label class="control-label" path="card_name">Name on Card</form:label>
+                                            <div class="input-group">
+                                               <form:input class="form-control" type="text" required="" placeholder="Name on Your Card" path="card_name"/>
+                                                <div class="input-group-addon"><span><i class="fa fa-user"></i></span></div>
+                                                </div>
+                                             </div>
+                                        </div>
+                                    </div>
+
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <form:label class="control-label" path="card_number">Card number </form:label>
+                                            <div class="input-group">
+                                                <form:input class="form-control" type="tel" required="" placeholder="Valid Card Number" path="card_number"/>
+                                                <div class="input-group-addon"><span><i class="fa fa-credit-card"></i></span></div>
+                                                 </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              <%--   <div class="alert alert-danger alert-dismissable fade in">
+                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                                 <strong><form:errors path="card_number"></form:errors></strong>
+                                 </div> --%>
+                                <div class="row">
+                                    <div class="col-xs-9">
+                                        <div class="form-group">
+                                            <label class="control-label" for="cardExpiry"><span class="hidden-xs">expiration </span><span class="visible-xs-inline">EXP </span> date</label>
+                                            <!-- <input class="form-control" type="tel" required="" placeholder="MM / YY" id="cardExpiry">
+                                        --> <div class="row">
+                                        <div class="col-xs-5">
+                                         
+              <select class="form-control col-sm-2" name="expiry-month" placeholder="Month" id="expiry-month">
+                <option>Month</option>
+                <option value="01">Jan (01)</option>
+                <option value="02">Feb (02)</option>
+                <option value="03">Mar (03)</option>
+                <option value="04">Apr (04)</option>
+                <option value="05">May (05)</option>
+                <option value="06">June (06)</option>
+                <option value="07">July (07)</option>
+                <option value="08">Aug (08)</option>
+                <option value="09">Sep (09)</option>
+                <option value="10">Oct (10)</option>
+                <option value="11">Nov (11)</option>
+                <option value="12">Dec (12)</option>
+              </select>
             </div>
-            
-            <div class="creditCardForm">
-    <div class="heading">
-        <h1>Confirm Purchase</h1>
-    </div>
-    <div class="payment">
-        <form>
-            <div class="form-group owner">
-                <label for="owner">Owner</label>
-                <input type="text" class="form-control" id="owner">
+            <div class="col-xs-4">
+              <select class="form-control" name="expiry-year" placeholder="year">
+                <option>year</option>
+                <option value="18">2018</option>
+                <option value="19">2019</option>
+                <option value="20">2020</option>
+                <option value="21">2021</option>
+                <option value="22">2022</option>
+                <option value="23">2023</option>
+                <option value="24">2024</option>
+                <option value="25">2025</option>
+                <option value="26">2026</option>
+                <option value="27">2027</option>
+                <option value="28">2028</option>
+              </select>
             </div>
-            <div class="form-group CVV">
-                <label for="cvv">CVV</label>
-                <input type="text" class="form-control" id="cvv">
-            </div>
-            <div class="form-group" id="card-number-field">
-                <label for="cardNumber">Card Number</label>
-                <input type="text" class="form-control" id="cardNumber">
-            </div>
-            <div class="form-group" id="expiration-date">
-                <label>Expiration Date</label>
-                <select>
-                    <option value="01">January</option>
-                    <option value="02">February </option>
-                    <option value="03">March</option>
-                    <option value="04">April</option>
-                    <option value="05">May</option>
-                    <option value="06">June</option>
-                    <option value="07">July</option>
-                    <option value="08">August</option>
-                    <option value="09">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                </select>
-                <select>
-                    <option value="16"> 2016</option>
-                    <option value="17"> 2017</option>
-                    <option value="18"> 2018</option>
-                    <option value="19"> 2019</option>
-                    <option value="20"> 2020</option>
-                    <option value="21"> 2021</option>
-                </select>
-            </div>
-            <div class="form-group" id="credit_cards">
-                <img src="assets/images/visa.jpg" id="visa">
-                <img src="assets/images/mastercard.jpg" id="mastercard">
-                <img src="assets/images/amex.jpg" id="amex">
-            </div>
-            <div class="form-group" id="pay-now">
-                <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm</button>
-            </div>
-        </form>
-    </div>
 </div>
-            <div class="form-group col-md-6">
-            </div>
-            
-        <hr/>
-        
-        <div class="form-group col-md-12 bg-primary">
-            <label class="control-label" for="billinginformation">Billing Address</label>
-        </div>
-        
-        <div class="form-group col-md-6">
-              <span class="required-lbl">* </span><label class="control-label" for="billingaddress1">Address 1</label>
-              <div class="controls">
-                <input id="billingaddress1" name="billingaddress1" type="text" placeholder="" class="form-control" required="">
-              </div>
-            </div>
-            
-            <div class="form-group col-md-6">
-              <label class="control-label" for="billingaddress2">Address 2</label>
-              <div class="controls">
-                <input id="billingaddress2" name="billingaddress2" type="text" placeholder="" class="form-control" required="">
-              </div>
-            </div>
-            
-            <div class="form-group col-md-6">
-              <span class="required-lbl">* </span><label class="control-label" for="billingcountry">Billing Country</label>
-              <div class="controls">
-                 <div class="controls">
-                    <select id="billingcountry" name="billingcountry" class="input-xlarge">
-                      <option>Please Select</option>
-                      <option>Australia</option>
-                    </select>
-                  </div>
-              </div>
-            </div>
-            
-             <div class="form-group col-md-6">
-              <span class="required-lbl">* </span><label class="control-label" for="billingstate">Billing State</label>
-              <div class="controls">
-                <select id="billingstate" name="billingstate" class="input-xlarge">
-                  <option>Please Select</option>
-                  <option>Australian Capital Territory</option>
-                  <option>New South Wales</option>
-                  <option>Northern Territory</option>
-                  <option>Queensland</option>
-                  <option>South Australia</option>
-                  <option>Tasmania</option>
-                  <option>Victoria</option>
-                  <option>Western Australia</option>
-                  <option>Other</option>
-                </select>
-              </div>
-            </div>
-            
-            <div class="form-group col-md-6">
-              <span class="required-lbl">* </span><label class="control-label" for="billingcity">Billing City</label>
-              <div class="controls">
-                <input id="billingcity" name="billingcity" type="text" placeholder="" class="form-control" required="">
-              </div>
-            </div>
-            
-            <div class="form-group col-md-6">
-              <span class="required-lbl">* </span><label class="control-label" for="billingpostcode">Post Code</label>
-              <div class="controls">
-                <input id="billingpostcode" name="billingpostcode" type="text" placeholder="" class="form-control" required="">
-              </div>
-            </div>
-            
-            <div class="form-group col-md-12 bg-primary">
-                <label class="control-label" for="contactinformation">Contact Information:</label>
-            </div>
-            
-            <div class="form-group col-md-6">
-              <span class="required-lbl">* </span><label class="control-label" for="emailaddress">Email Address</label>
-              <div class="controls">
-                <input id="email" name="email" type="email" placeholder="" class="form-control" required="">
-              </div>
-            </div>
-            
-            <div class="form-group col-md-6">
-              <label class="control-label" for="phone">Phone</label>
-              <div class="controls">
-                <input id="phone" name="phone" type="number" placeholder="" class="form-control" required="">
-              </div>
-            </div>
-            
-            <div class="form-group col-md-6">
-              <label class="control-label" for="organization">Organization</label>
-              <div class="controls">
-                <input id="organization" name="organization" type="text" placeholder="" class="form-control" required="">
-              </div>
-            </div>
-            
-            <div class="form-group col-md-12 bg-primary">
-                <label class="control-label" for="contactinformation">Additional Information:</label>
-            </div>
-            
-            <label>* To avoid duplication, Type "YES" if you are a current subscriber wishing to extend your subscription OR "NO" if you don’t have an active subscription</label>
-            
-            <div class="form-group col-md-6">
-              <div class="controls">
-                <input id="additionalinfo" name="additionalinfo" type="text" placeholder="" class="form-control" required="">
-              </div>
-            </div>
-            
-            <div class="form-group col-md-12">
-                <div class="control-group">
-                  <label class="control-label" for="iaccept"></label>
-                  <div class="controls">
-                    <label class="checkbox" for="iaccept-0">
-                      <input type="checkbox" name="iaccept" id="iaccept-0" value="I accept the Teams and conditions">
-                      I accept the <a href="">Teams and conditions</a>
-                    </label>
-                  </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3 pull-right">
+                                          <div class="form-group">
+                                            <label class="control-label" for="cardCVC">CVV code</label>
+                                            <input class="form-control" type="tel" required="" placeholder="CVV" id="cardCVC">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <button class="btn btn-success btn-block btn-lg" type="submit" >Pay With Card</button>
+                                    </div>
+                                </div>
+                            </form:form>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="form-group col-md-12">
-                <div class="control-group confirm-btn">
-                  <label class="control-label" for="placeorderbtn"></label>
-                  <div class="controls">
-                    <button id="placeorderbtn" name="placeorderbtn" class="btn btn-primary">Place My Order</button>
-                  </div>
+   
+   <br>
+  
+
+   <form:form action="CodInvoice" id="payment-form" modelAttribute="card">                         
+  	<div class="row">
+    <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+        <button class="btn btn-warning btn-block" data-toggle="modal" data-target="#myModal" type="button">Cash on Delivery</button>
+    </div></div>
+    <div class="modal fade" id="myModal" role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Cash On Delivery</h4></div>
+                <div class="modal-body">
+                    <p>A delivery Charge of <Strong>Rs.99/-</Strong> is applicable for Cash on Delivery for orders below Rs.200/-</p>
+                    <div class="col-xs-offset-2 col-xs-12">
+             <div class="form-group">
+                 <label class="control-label" for="total"><h3><strong>Grand Total : ${total}</strong></h3></label>
+                </div>
+                </div>                    
+        
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" type="submit">Agree & Place the Order</button>
                 </div>
             </div>
-            
         </div>
-	</div>
+    </div>
+   
+ </form:form>
+    </div>
+    
+    <div >
 </div>
+  
 </body>
+
 </html>

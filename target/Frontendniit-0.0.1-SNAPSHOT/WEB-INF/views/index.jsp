@@ -36,7 +36,7 @@ ${ExistingMessage}
                 </button>
                 
                 
-                <a class="navbar-brand" href="#">icecream</a>
+                <a class="navbar-brand" href="#">CHOCOHUB</a>
           		
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -76,23 +76,58 @@ ${ExistingMessage}
     </nav>
 </div>
 <!-- =================================-->
-
 <div class="container">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="3" class="active"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img class="img-rounded" class="img-responsive center-block"
+      src="C:\Users\user\Downloads\icecream\1.jpg" style="width:100%" "height="50%">
+    </div>
+    <div class="item">
+    <img class="img-rounded" class="img-responsive center-block"
+      src="C:\Users\user\Downloads\icecream\2.jpg" style="width:100%" "height="50%">
+    </div>
+
+    <div class="item">
+    <img class="img-rounded" class="img-responsive center-block"
+      src="C:\Users\user\Downloads\icecream\3.jpg" style="width:100%" "height="20%">
+    </div>
+ 
+  </div>
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!-- ---------------------- -->
+<div class="container">
+		
+			<div class="row">
+		
 		<c:forEach items="${ProductList}" var="product">
 			<h2 style="color: blue">
 				<c:out value="${product.name }" />
 			</h2>
 
-
-			<div class="row">
-			
-				<img src="/Frontendniit/myImage/imageDisplay?id=${product.id}"class="rounded float-left"
+		
+				<img src="/Bakersfrontend/myImage/imageDisplay?id=${product.id}"class="rounded float-left"
 							class="img-responsive" style="width: 200px; height:120px">
-										<!--  <img src="/Bakersfrontend/myImage/imageDisplay?id=${product.id}"-->		
+										<!--  <img src="/Frontendniit/myImage/imageDisplay?id=${product.id}"-->		
 										<!-- <div>				</div>-->
 			</div>
-
-			<div class="row">
 				<div class="img">
 					<div class="desc">
 						<p>
@@ -118,9 +153,9 @@ ${ExistingMessage}
 						</div>
 
 					</div>
-				</div>
+				</div></c:forEach>
 			</div>
-		</c:forEach>
+		
 	</div><br/><br/><br/><br/>
 	<jsp:include page="footer.jsp"></jsp:include> 
 </body>
