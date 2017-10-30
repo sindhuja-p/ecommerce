@@ -123,7 +123,7 @@ ${ExistingMessage}
 			</h2>
 
 		
-				<img src="/Bakersfrontend/myImage/imageDisplay?id=${product.id}"class="rounded float-left"
+				<img src="/Frontendniit/myImage/imageDisplay?id=${product.id}"class="rounded float-left"
 							class="img-responsive" style="width: 200px; height:120px">
 										<!--  <img src="/Frontendniit/myImage/imageDisplay?id=${product.id}"-->		
 										<!-- <div>				</div>-->

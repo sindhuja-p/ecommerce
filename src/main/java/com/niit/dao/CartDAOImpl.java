@@ -107,6 +107,15 @@ Cart cart=	sessionFactory.getCurrentSession().get(Cart.class,cart_id);
 		
 		return null;
 	}
+
+
+	public List<Cart> getCart(int userId) {
+		 List<Cart> clist=sessionFactory.getCurrentSession().createQuery("from Cart where userId= "+userId).list();
+		 return clist;
+		}
+
+		
+	}
 	
 
-}
+
