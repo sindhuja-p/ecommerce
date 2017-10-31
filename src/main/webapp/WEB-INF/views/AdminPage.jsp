@@ -18,6 +18,11 @@
     }
 </style>
 </head>
+<div class="container"> 
+       <div style='position:absolute;zindex:0;left:0;top:0;width:100%;height:100%'>
+           <img src='C:\Users\user\Downloads\icecream/ADMIN1.jpg' style='width:100%;height:100%' alt='[]' />
+       </div>
+   </div>
 <body>
 <div class="bs-example">
     <nav id="myNavbar" class="navbar navbar-inverse" role="navigation">
@@ -30,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">CHOCOHUB</a>
+                <a class="navbar-brand" href="#">icecreams</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

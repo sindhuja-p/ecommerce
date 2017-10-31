@@ -121,7 +121,7 @@ public class HomeController
 			public String UserRegister(@ModelAttribute("user") User user,RedirectAttributes attributes) {
 				user.setEnabled(true);
 				user.setRole("ROLE_USER");
-				userDAO.saveOrUpdate(user);
+				userDAO.saveUser(user);
 				attributes.addFlashAttribute("SuccessMessage","Registration Successfull");
 				return "redirect:/";
 			}
@@ -139,7 +139,7 @@ public class HomeController
 			    public String ShowProduct(@PathVariable("id") int id,RedirectAttributes attributes,Model m) {
 			        m.addAttribute("UserClickedshowproduct", "true");
 			        m.addAttribute("productList", productDAO.getProductById(id));
-			    	return "showProduct";
+			    	return "ShowProduct";
 			    }
 			
 			

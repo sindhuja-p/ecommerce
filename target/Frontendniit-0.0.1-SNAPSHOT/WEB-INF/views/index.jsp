@@ -10,7 +10,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Index Page</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
@@ -34,22 +33,15 @@ ${ExistingMessage}
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
-                
-                <a class="navbar-brand" href="#">CHOCOHUB</a>
-          		
+                <a class="navbar-brand" href="#">Icecream</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">HOME</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">Profile</a></li>
                     <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">PROFILE<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="">show profile</a></li>
-                    	</ul></li>
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">MESSAGES<b class="caret"></b></a>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Messages <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="">Inbox</a></li>
                             <li><a href="#">Drafts</a></li>
@@ -61,21 +53,25 @@ ${ExistingMessage}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                    	<li><a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="glyphicon glyphicon-user"></span> Sign Up<b class="caret"></b></a>
-                     
-                        	<ul class="dropdown-menu">
-                            	<li><a href="login">Login action</a></li>
-                            	<li><a href="register">Registration action</a></li>
-         
-                        	</ul>
-                    	</li>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Sign Up <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="login">Login action</a></li>
+                            <li><a href="signup">Registration action</a></li>
+                           
+                             
+                            
+                          
+                        </ul>
                     </li>
-                </ul>     
+                </ul>
+                
             </div><!-- /.navbar-collapse -->
         </div>
     </nav>
 </div>
-<!-- =================================-->
+
+<!-- ================= -->
+
 <div class="container">
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
@@ -89,16 +85,16 @@ ${ExistingMessage}
   <div class="carousel-inner">
     <div class="item active">
       <img class="img-rounded" class="img-responsive center-block"
-      src="C:\Users\user\Downloads\icecream\1.jpg" style="width:100%" "height="50%">
+      src="C:\Users\user\Downloads\sindhu\a1.jpg" style="width:100%" "height="50%">
     </div>
     <div class="item">
     <img class="img-rounded" class="img-responsive center-block"
-      src="C:\Users\user\Downloads\icecream\2.jpg" style="width:100%" "height="50%">
+      src="C:\Users\user\Downloads\sindhu\a2.jpg" style="width:100%" "height="50%">
     </div>
 
     <div class="item">
     <img class="img-rounded" class="img-responsive center-block"
-      src="C:\Users\user\Downloads\icecream\3.jpg" style="width:100%" "height="20%">
+      src="C:\Users\user\Downloads\sindhu\a3.jpg" style="width:100%" "height="20%">
     </div>
  
   </div>
@@ -112,51 +108,44 @@ ${ExistingMessage}
     <span class="sr-only">Next</span>
   </a>
 </div>
-<!-- ---------------------- -->
-<div class="container">
-		
-			<div class="row">
-		
-		<c:forEach items="${ProductList}" var="product">
-			<h2 style="color: blue">
-				<c:out value="${product.name }" />
-			</h2>
-
-		
-				<img src="/Frontendniit/myImage/imageDisplay?id=${product.id}"class="rounded float-left"
-							class="img-responsive" style="width: 200px; height:120px">
-										<!--  <img src="/Frontendniit/myImage/imageDisplay?id=${product.id}"-->		
-										<!-- <div>				</div>-->
-			</div>
-				<div class="img">
-					<div class="desc">
-						<p>
-						<div class="form-group">
-							<input type="text"  style="width: 400px;" class="form-control" value="${product.name}"
-								readonly="readonly">
-						</div>
-
-						<div class="form-group">
-							<input type="text" style="width: 400px;" class="form-control"
-								value="Rs. ${product.price}" readonly="readonly">
-						</div>
-						<div class="form-group">
-							<input type="text"style="width: 400px;" class="form-control"
-								value="${product.description}" readonly="readonly">
-						</div>
-						<div>
-							<form action="addtoCart/${product.id}">
-								<input type="submit" value="Add to Cart" class="btn btn-primary" >
-							</form>
-							
-
-						</div>
-
-					</div>
-				</div></c:forEach>
-			</div>
-		
-	</div><br/><br/><br/><br/>
+<!-- =================================== -->
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+	<div class="container">
+          
+        <div class="row">
+<c:forEach items="${ProductList}" var="product">     
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+             <div class="panel-body"> <img src="/Frontendniit/myImage/imageDisplay?id=${product.id}" class="img-responsive" style="width:100%" alt="Image"></div>
+                <%-- <img src="<c:url value="/resources/assets/img/rv_1-gito-1.jpg"/>">
+                    --%> <div class="caption">
+                        <h3>${product.name}</h3>
+                        <ul>
+                         <p>${product.description}</p>
+                        <li>Price: Rs.<Strong>${product.price}</Strong></li>
+                       
+     
+                   <form:form action="addtoCart/${product.id}" method="POST">
+                                <input type="submit" value="Add to Cart" class="btn btn-primary">
+                                </form:form>
+                                
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+         
+           </c:forEach>       
+                </div>
+                
+         
+        </div>
+<br/><br/><br/><br/>
 	<jsp:include page="footer.jsp"></jsp:include> 
 </body>
 </html> 

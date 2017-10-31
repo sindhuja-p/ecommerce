@@ -1,4 +1,7 @@
 package com.niit.controller;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +35,6 @@ public class CartController
 	@Autowired
 	UserDAO userDAO;
 	
-	int userId;
-	
 	
 	User user;
 		
@@ -42,18 +43,25 @@ public class CartController
 	 {
 	    String email = SecurityContextHolder.getContext().getAuthentication().getName();
 		User user = userDAO.get(email);
-		//int userId = (int) session.getAttribute("userid");	
-		userId=user.getId();
-	    System.out.println(userId);
+		int userid = (Integer) session.getAttribute("userid");	
+		userid=user.getId();
+	    System.out.println(userid);
 	    int q=1;
-	    if (cartDAO.getitem(id, userId) != null) 
+	    if (cartDAO.getitem(id, userid) != null) 
 	    {
-				Cart item = cartDAO.getitem(id, userId);		
-				item.setProductQuantity(item.getProductQuantity() + q);
+				Cart item = cartDAO.getitem(id, userid);		
+				item.setQuantity(item.getQuantity() + q);
 				Product p = productDAO.getProductById(id);
 				System.out.println(item);
-				item.setProductPrice(p.getPrice());
-				item.setSubTotal(item.getProductQuantity() *p.getPrice());
+				item.setProductprice(p.getPrice());
+				item.setSubTotal(item.getProductprice() *p.getPrice());
+				
+				String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+				 
+				/* Date date = new java.util.Date();
+				   long diff = date.getTime();
+				   item.setOrderId(diff);*/
+				item.setOrderId(timeStamp);
 				cartDAO.saveProductToCart(item);
 				attributes.addFlashAttribute("ExistingMessage",  p.getName() +"is already exist");
 		
@@ -64,12 +72,17 @@ public class CartController
 				Cart item = new Cart();
 				Product p = productDAO.getProductById(id);
 				item.setProductid(p.getId());
-				item.setProductName(p.getName());
-				item.setUserId(userId);
-				item.setProductQuantity(q);
+				item.setProductname(p.getName());
+				item.setUserid(userid);
+				item.setQuantity(q);
 				item.setStatus("C");
 				item.setSubTotal(q * p.getPrice());
-				item.setProductPrice(p.getPrice());
+				item.setProductprice(p.getPrice());
+				String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		     	   /* Date date = new java.util.Date();
+				   long diff = date.getTime();
+				   item.setOrderId(diff);*/
+	             item.setOrderId(timeStamp);
 				cartDAO.saveProductToCart(item);
 				attributes.addFlashAttribute("SuccessMessage", "Item"+p.getName()+" has been deleted Successfully");
 				return "redirect:/";
@@ -85,13 +98,13 @@ public class CartController
 			User user = userDAO.get(email);
 			
 	    	
-	    	 userId = user.getId();
+			int userid = user.getId();
 	    
 			//int userId = (Integer) session.getAttribute("userid");
-			model.addAttribute("CartList", cartDAO.listCart());
-			 if(cartDAO.cartsize(userId)!=0){
+			model.addAttribute("CartList", cartDAO.getCart(userid));
+			 if(cartDAO.cartsize(userid)!=0){
 				
-				model.addAttribute("CartPrice", cartDAO.CartPrice(userId));
+				model.addAttribute("CartPrice", cartDAO.CartPrice(userid));
 			} else {
 				model.addAttribute("EmptyCart", "true");
 			}
@@ -111,47 +124,36 @@ public class CartController
 			User user = userDAO.get(email);
 			
 	    	
-	    	 userId = user.getId();
+	    	// userId = user.getId();
 
 			
-			//int userId = (Integer) session.getAttribute("userid");
+			int userid = (Integer) session.getAttribute("userid");
 			Cart cart = cartDAO.editCartById(cartid);
 			Product p = productDAO.getProductById(cart.getProductid());
-			cart.setProductQuantity(q);
+			cart.setQuantity(q);
 			//cart.setProductPrice(q * p.getPrice());
 			cart.setSubTotal(q * p.getPrice());
 			cartDAO.saveProductToCart(cart);
-			session.setAttribute("cartsize", cartDAO.cartsize(userId));
+			session.setAttribute("cartsize", cartDAO.cartsize(userid));
 			return "redirect:/viewcart";
 		}
 	    
 	    
-	    
-	    
-	@RequestMapping(value="removeCart/{id}")
-	public String deleteorder(@PathVariable("id") int id, HttpSession session) {
-
-		String email = SecurityContextHolder.getContext().getAuthentication().getName();
-		
-		User user = userDAO.get(email);
-		
-		
-		 userId = user.getId();
-
-		cartDAO.removeCartById(id);
-		session.setAttribute("cartsize",  cartDAO.cartsize(userId));
-
-		return "redirect:/viewcart";
-	}
+	    @RequestMapping(value="removeCart/{id}")
+		public String deleteorder(@PathVariable("id") int id, HttpSession session) 
+		{
+			cartDAO.removeCartById(id);
+			session.setAttribute("cartsize", cartDAO.cartsize((Integer) session.getAttribute("userid")));
+			return "redirect:/viewcart";
+		}
 	
 
-	@RequestMapping("continue_shopping")
-	public String continueshopping()
-	{
-	return "redirect:/";	
+	    @RequestMapping("continue_shopping")
+	    public String continueshopping()
+	    {
+	    	return "loggedin";	
 
-	}
-	
-	}
-
-
+	    }
+	    
+	    
+}

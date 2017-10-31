@@ -6,18 +6,27 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
+
+<html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login Page</title>
-<link rel="stylesheet" href="resources/css/Pretty-Footer.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckOut</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="resources/css/Pretty-Footer.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
+    
 </head>
 
 <body>
+
+
+<br>
+<br>
 
 <div class="container">
    <div class="col-xs-offset-2 col-xs-12">
@@ -30,7 +39,7 @@
                 <div class="col-md-4 col-md-offset-4 col-xs-12">
                     <div class="panel panel-default credit-card-box">
                         <div class="panel-heading">
-                            <h3 align="center">Payment Details </h3></div>
+                            <h3 class="panel-title"><span class="panel-title-text">Payment Details </span><img class="img-responsive panel-title-image" src="<c:url value="/resources/assets/img/accepted_cards.png"/>"></h3></div>
                         <div class="panel-body">
                             <form:form action="invoice" id="payment-form" modelAttribute="card">
                             <div class="row">
@@ -39,7 +48,7 @@
                                         	<form:label class="control-label" path="card_name">Name on Card</form:label>
                                             <div class="input-group">
                                                <form:input class="form-control" type="text" required="" placeholder="Name on Your Card" path="card_name"/>
-                                              
+                                                <div class="input-group-addon"><span><i class="fa fa-user"></i></span></div>
                                                 </div>
                                              </div>
                                         </div>
@@ -146,7 +155,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
-                    <a href="invoice" type="submit">Agree & Place the Order</a>
+                    <button class="btn btn-primary" type="submit">Agree & Place the Order</button>
                 </div>
             </div>
         </div>
@@ -155,10 +164,13 @@
  </form:form>
     </div>
     
-   
+    <div 
+   <c:import url="/WEB-INF/views/footer.jsp" />>
+</div>
     
     
-  
+    <script src="<c:url value= "/resources/assets/js/jquery.min.js"/>"></script>
+    <script src="<c:url value= "/resources/assets/bootstrap/js/bootstrap.min.js"/>"></script>
 </body>
 
 </html>
